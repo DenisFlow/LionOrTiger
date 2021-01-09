@@ -85,6 +85,27 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "THIS IS WRONG STEP", Toast.LENGTH_LONG).show();
     }
 
+    public void fnClickMakePlayAgain(View View){
+        for (int i = 0; i < table.length; i++){
+            table[i] = 0;
+        }
+
+        global_b_end_of_game = false;
+        resultPlayer = 0;
+        current = Player.one;
+
+        im0.setImageResource(0);
+        im1.setImageResource(0);
+        im2.setImageResource(0);
+        im3.setImageResource(0);
+        im4.setImageResource(0);
+        im5.setImageResource(0);
+        im6.setImageResource(0);
+        im7.setImageResource(0);
+        im8.setImageResource(0);
+
+    }
+
     public boolean setArray(int id, int playerNum) {
         boolean bWasChange = false;
 //        for(int i = 0; i <= 8; i++){
