@@ -1,2 +1,3 @@
+include ':libTestLogicWin'
 include ':app'
 rootProject.name = "LionOrTiger"
