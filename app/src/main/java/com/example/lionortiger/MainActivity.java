@@ -46,13 +46,23 @@ public class MainActivity extends AppCompatActivity {
 
             tappedImageView.setTranslationX(-2000);
             if (current == Player.one) {
-                tappedImageView.setImageResource(R.drawable.lepard);
-                current = Player.two;
-                setArray(tappedImageView.getId(), 1);
+                if (setArray(tappedImageView.getId(), 1)) {
+                    tappedImageView.setImageResource(R.drawable.lepard);
+                    current = Player.two;
+                }else{
+                    fnShowErrorStep();
+                    tappedImageView.setImageResource(R.drawable.lion);
+//                    return;
+                }
             } else {
-                tappedImageView.setImageResource(R.drawable.lion);
-                current = Player.one;
-                setArray(tappedImageView.getId(), 2);
+                if (setArray(tappedImageView.getId(), 2)) {
+                    tappedImageView.setImageResource(R.drawable.lion);
+                    current = Player.one;
+                }else{
+                    fnShowErrorStep();
+                    tappedImageView.setImageResource(R.drawable.lepard);
+//                    return;
+                }
             }
 
             resultPlayer = CheckWinner();
@@ -71,30 +81,46 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void setArray(int id, int playerNum) {
+    public void fnShowErrorStep(){
+        Toast.makeText(MainActivity.this, "THIS IS WRONG STEP", Toast.LENGTH_LONG).show();
+    }
+
+    public boolean setArray(int id, int playerNum) {
+        boolean bWasChange = false;
 //        for(int i = 0; i <= 8; i++){
 //
 //            table[i] = playerNum;
 //        }
-        if (im0.getId() == id) {
+        if (im0.getId() == id && table[0] == 0 ) {
             table[0] = playerNum;
-        } else if (im1.getId() == id) {
+            bWasChange = true;
+        } else if (im1.getId() == id && table[1] == 0 ) {
             table[1] = playerNum;
-        } else if (im2.getId() == id) {
+            bWasChange = true;
+        } else if (im2.getId() == id && table[2] == 0 ) {
             table[2] = playerNum;
-        } else if (im3.getId() == id) {
+            bWasChange = true;
+        } else if (im3.getId() == id && table[3] == 0 ) {
             table[3] = playerNum;
-        } else if (im4.getId() == id) {
+            bWasChange = true;
+        } else if (im4.getId() == id && table[4] == 0 ) {
             table[4] = playerNum;
-        } else if (im5.getId() == id) {
+            bWasChange = true;
+        } else if (im5.getId() == id && table[5] == 0 ) {
             table[5] = playerNum;
-        } else if (im6.getId() == id) {
+            bWasChange = true;
+        } else if (im6.getId() == id && table[6] == 0 ) {
             table[6] = playerNum;
-        } else if (im7.getId() == id) {
+            bWasChange = true;
+        } else if (im7.getId() == id && table[7] == 0 ) {
             table[7] = playerNum;
-        } else if (im8.getId() == id) {
+            bWasChange = true;
+        } else if (im8.getId() == id && table[8] == 0 ) {
             table[8] = playerNum;
+            bWasChange = true;
         }
+
+        return bWasChange;
 
     }
 
