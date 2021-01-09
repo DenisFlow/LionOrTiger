@@ -1,11 +1,13 @@
 package com.example.lionortiger;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.gridlayout.widget.GridLayout;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
         one, two
     }
 
-    ImageView im0, im1, im2, im3, im4, im5, im6, im7, im8;
-    Button btnAgain;
+    private ImageView im0, im1, im2, im3, im4, im5, im6, im7, im8;
+    private Button btnAgain;
+    private GridLayout grdLayout;
 
 
     Player current = Player.one;
@@ -41,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         im8 = findViewById(R.id.imageView9);
 
         btnAgain = findViewById(R.id.button);
+
+        grdLayout = findViewById(R.id.grid_Layout);
 
 
 
@@ -100,21 +105,24 @@ public class MainActivity extends AppCompatActivity {
         for (int i = 0; i < table.length; i++){
             table[i] = 0;
         }
-
+        for (int i = 0; i < grdLayout.getChildCount(); i++){
+            ImageView view = (ImageView) grdLayout.getChildAt(i);
+            view.setImageDrawable(null);
+        }
         global_b_end_of_game = false;
         resultPlayer = 0;
         current = Player.one;
         btnAgain.setVisibility(android.view.View.INVISIBLE);
 
-        im0.setImageResource(0);
-        im1.setImageResource(0);
-        im2.setImageResource(0);
-        im3.setImageResource(0);
-        im4.setImageResource(0);
-        im5.setImageResource(0);
-        im6.setImageResource(0);
-        im7.setImageResource(0);
-        im8.setImageResource(0);
+//        im0.setImageResource(0);
+//        im1.setImageResource(0);
+//        im2.setImageResource(0);
+//        im3.setImageResource(0);
+//        im4.setImageResource(0);
+//        im5.setImageResource(0);
+//        im6.setImageResource(0);
+//        im7.setImageResource(0);
+//        im8.setImageResource(0);
 
     }
 
