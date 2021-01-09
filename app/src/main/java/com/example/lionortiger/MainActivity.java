@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     ImageView im0, im1, im2, im3, im4, im5, im6, im7, im8;
+    Button btnAgain;
 
 
     Player current = Player.one;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     int[][] win = {{0, 1, 2}, {3, 4, 5}, {6, 7, 8}, {0, 4, 8}, {2, 4, 6}, {0, 3, 6}, {1, 4, 7}, {2, 5, 8}};
     boolean global_b_end_of_game = false;
     int resultPlayer = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         im6 = findViewById(R.id.imageView7);
         im7 = findViewById(R.id.imageView8);
         im8 = findViewById(R.id.imageView9);
+
+        btnAgain = findViewById(R.id.button);
+
+
 
 
     }
@@ -73,11 +80,15 @@ public class MainActivity extends AppCompatActivity {
 
         if (resultPlayer == 0) {
 
-        }else if (resultPlayer <= -1){
-            Toast.makeText(MainActivity.this, "NOONE WIN", Toast.LENGTH_LONG).show();
-
-        }else{
-            Toast.makeText(MainActivity.this, "WIN PLAYER #" + resultPlayer, Toast.LENGTH_LONG).show();
+        }else {
+            if (resultPlayer <= -1) {
+                Toast.makeText(MainActivity.this, "NOONE WIN", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(MainActivity.this, "WIN PLAYER #" + resultPlayer, Toast.LENGTH_LONG).show();
+            }
+            if (btnAgain.getVisibility() == android.view.View.INVISIBLE) {
+                btnAgain.setVisibility(android.view.View.VISIBLE);
+            }
         }
     }
 
@@ -93,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
         global_b_end_of_game = false;
         resultPlayer = 0;
         current = Player.one;
+        btnAgain.setVisibility(android.view.View.INVISIBLE);
 
         im0.setImageResource(0);
         im1.setImageResource(0);
